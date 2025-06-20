@@ -1,0 +1,257 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red202\green202\blue202;
+\red113\green184\blue255;\red194\green126\blue101;\red188\green135\blue186;\red212\green212\blue212;\red113\green171\blue89;
+\red167\green197\blue152;\red67\green192\blue160;\red88\green147\blue206;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c83137\c83137\c83137;
+\cssrgb\c50980\c77647\c100000;\cssrgb\c80784\c56863\c47059;\cssrgb\c78824\c61176\c77647;\cssrgb\c86275\c86275\c86275;\cssrgb\c50980\c71765\c42353;
+\cssrgb\c70980\c80784\c65882;\cssrgb\c30588\c78824\c69020;\cssrgb\c41176\c64706\c84314;}
+\margl1440\margr1440\vieww18260\viewh12560\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 <\strokec5 !\strokec4 DOCTYPE html>\
+<html lang=\strokec6 "en"\strokec4 >\
+<head>\
+    <meta charset=\strokec6 "UTF-8"\strokec4 >\
+    <meta name=\strokec6 "viewport"\strokec4  content=\strokec6 "width=device-width, initial-scale=1.0"\strokec4 >\
+    <title>Cylinder Volume Calculator</title>\
+    <\strokec5 !\strokec4 -- Tailwind CSS CDN \strokec5 for\strokec4  easy styling -->\
+    <script src=\strokec6 "https://cdn.tailwindcss.com"\strokec4 ></script>\
+    <style>\
+        /* Custom styles \strokec7 for\strokec4  the Inter font \strokec5 and\strokec4  basic layout */\
+        body \strokec8 \{\strokec4 \
+            font-family\strokec8 :\strokec4  \strokec6 'Inter'\strokec8 ,\strokec4  sans-serif\strokec8 ;\strokec4 \
+            background-color\strokec8 :\strokec4  \strokec9 #f0f4f8; /* Light gray background */\strokec4 \
+            display\strokec8 :\strokec4  flex\strokec8 ;\strokec4 \
+            justify-content\strokec8 :\strokec4  center\strokec8 ;\strokec4 \
+            align-items\strokec8 :\strokec4  center\strokec8 ;\strokec4 \
+            min-height\strokec8 :\strokec4  \strokec10 100\strokec4 vh\strokec8 ;\strokec4 \
+            margin\strokec8 :\strokec4  \strokec10 0\strokec8 ;\strokec4 \
+            padding\strokec8 :\strokec4  \strokec10 20\strokec4 px\strokec8 ;\strokec4 \
+            box-sizing\strokec8 :\strokec4  border-box\strokec8 ;\strokec4 \
+        \strokec8 \}\strokec4 \
+        .calculator-container \strokec8 \{\strokec4 \
+            background-color\strokec8 :\strokec4  \strokec9 #ffffff;\strokec4 \
+            padding\strokec8 :\strokec4  \strokec10 30\strokec4 px\strokec8 ;\strokec4 \
+            border-radius\strokec8 :\strokec4  \strokec10 15\strokec4 px\strokec8 ;\strokec4 \
+            box-shadow\strokec8 :\strokec4  \strokec10 0\strokec4  \strokec10 10\strokec4 px \strokec10 25\strokec4 px rgba\strokec8 (\strokec10 0\strokec8 ,\strokec4  \strokec10 0\strokec8 ,\strokec4  \strokec10 0\strokec8 ,\strokec4  \strokec10 0.1\strokec8 );\strokec4 \
+            width\strokec8 :\strokec4  \strokec10 100\strokec4 %\strokec8 ;\strokec4 \
+            max-width\strokec8 :\strokec4  \strokec10 450\strokec4 px\strokec8 ;\strokec4  /* Max width \strokec7 for\strokec4  better readability on large screens */\
+            box-sizing\strokec8 :\strokec4  border-box\strokec8 ;\strokec4 \
+        \strokec8 \}\strokec4 \
+        input\strokec8 [\strokec11 type\strokec4 =\strokec6 "number"\strokec8 ]\strokec4  \strokec8 \{\strokec4 \
+            -moz-appearance\strokec8 :\strokec4  textfield\strokec8 ;\strokec4  /* Firefox */\
+        \strokec8 \}\strokec4 \
+        input\strokec8 [\strokec11 type\strokec4 =\strokec6 "number"\strokec8 ]::\strokec4 -webkit-outer-spin-button\strokec8 ,\strokec4 \
+        input\strokec8 [\strokec11 type\strokec4 =\strokec6 "number"\strokec8 ]::\strokec4 -webkit-inner-spin-button \strokec8 \{\strokec4 \
+            -webkit-appearance\strokec8 :\strokec4  none\strokec8 ;\strokec4  /* Chrome\strokec8 ,\strokec4  Safari\strokec8 ,\strokec4  Edge */\
+            margin\strokec8 :\strokec4  \strokec10 0\strokec8 ;\strokec4  /* Remove extra space */\
+        \strokec8 \}\strokec4 \
+        /* Style \strokec7 for\strokec4  the select dropdowns */\
+        select \strokec8 \{\strokec4 \
+            appearance\strokec8 :\strokec4  none\strokec8 ;\strokec4  /* Remove default browser styling */\
+            -webkit-appearance\strokec8 :\strokec4  none\strokec8 ;\strokec4 \
+            -moz-appearance\strokec8 :\strokec4  none\strokec8 ;\strokec4 \
+            background-image\strokec8 :\strokec4  url\strokec8 (\strokec6 "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E"\strokec8 );\strokec4 \
+            background-repeat\strokec8 :\strokec4  no-repeat\strokec8 ;\strokec4 \
+            background-position\strokec8 :\strokec4  right \strokec10 0.75\strokec4 rem center\strokec8 ;\strokec4 \
+            background-size\strokec8 :\strokec4  \strokec10 1.5\strokec4 em\strokec8 ;\strokec4 \
+            /* Adjusted \strokec7 for\strokec4  more space \strokec5 and\strokec4  wider button */\
+            padding-right\strokec8 :\strokec4  \strokec10 4\strokec4 rem\strokec8 ;\strokec4  /* Increased space \strokec7 for\strokec4  text before arrow */\
+            min-width\strokec8 :\strokec4  \strokec10 100\strokec4 px\strokec8 ;\strokec4  /* Ensure a minimum width \strokec7 for\strokec4  the dropdown */\
+        \strokec8 \}\strokec4 \
+    </style>\
+</head>\
+<body>\
+    <div \strokec12 class\strokec4 =\strokec6 "calculator-container"\strokec4 >\
+        <h1 \strokec12 class\strokec4 =\strokec6 "text-3xl font-bold text-center text-gray-800 mb-6"\strokec4 >Cylinder Volume Calculator</h1>\
+        <p \strokec12 class\strokec4 =\strokec6 "text-center text-gray-600 mb-8"\strokec4 >Select units \strokec7 for\strokec4  diameter \strokec5 and\strokec4  length. Volume will be calculated \strokec5 in\strokec4  cubic centimeters\strokec8 ,\strokec4  liters\strokec8 ,\strokec4  \strokec5 and\strokec4  US gallons.</p>\
+\
+        <div \strokec12 class\strokec4 =\strokec6 "mb-4"\strokec4 >\
+            <label \strokec7 for\strokec4 =\strokec6 "diameter"\strokec4  \strokec12 class\strokec4 =\strokec6 "block text-gray-700 text-sm font-medium mb-2"\strokec4 >Diameter\strokec8 :\strokec4 </label>\
+            <div \strokec12 class\strokec4 =\strokec6 "flex rounded-lg shadow-sm border focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent"\strokec4 >\
+                <input \strokec11 type\strokec4 =\strokec6 "number"\strokec4  id=\strokec6 "diameter"\strokec4  placeholder=\strokec6 "e.g., 10.5"\strokec4 \
+                       \strokec12 class\strokec4 =\strokec6 "appearance-none rounded-l-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-transparent border-0"\strokec4 >\
+                <select id=\strokec6 "diameterUnit"\strokec4  \strokec12 class\strokec4 =\strokec6 "rounded-r-lg px-3 text-gray-700 bg-gray-50 border-l border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent"\strokec4 >\
+                    <optgroup label=\strokec6 "Metric"\strokec4 >\
+                        <option value=\strokec6 "cm"\strokec4 >cm</option>\
+                        <option value=\strokec6 "mm"\strokec4 >mm</option>\
+                        <option value=\strokec6 "m"\strokec4 >m</option>\
+                    </optgroup>\
+                    <optgroup label=\strokec6 "Imperial"\strokec4 >\
+                        <option value=\strokec6 "in"\strokec4 >\strokec5 in\strokec4 </option>\
+                        <option value=\strokec6 "ft"\strokec4 >ft</option>\
+                    </optgroup>\
+                </select>\
+            </div>\
+        </div>\
+\
+        <div \strokec12 class\strokec4 =\strokec6 "mb-6"\strokec4 >\
+            <label \strokec7 for\strokec4 =\strokec6 "length"\strokec4  \strokec12 class\strokec4 =\strokec6 "block text-gray-700 text-sm font-medium mb-2"\strokec4 >Length\strokec8 :\strokec4 </label>\
+            <div \strokec12 class\strokec4 =\strokec6 "flex rounded-lg shadow-sm border focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent"\strokec4 >\
+                <input \strokec11 type\strokec4 =\strokec6 "number"\strokec4  id=\strokec6 "length"\strokec4  placeholder=\strokec6 "e.g., 20"\strokec4 \
+                       \strokec12 class\strokec4 =\strokec6 "appearance-none rounded-l-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-transparent border-0"\strokec4 >\
+                <select id=\strokec6 "lengthUnit"\strokec4  \strokec12 class\strokec4 =\strokec6 "rounded-r-lg px-3 text-gray-700 bg-gray-50 border-l border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent"\strokec4 >\
+                    <optgroup label=\strokec6 "Metric"\strokec4 >\
+                        <option value=\strokec6 "cm"\strokec4 >cm</option>\
+                        <option value=\strokec6 "mm"\strokec4 >mm</option>\
+                        <option value=\strokec6 "m"\strokec4 >m</option>\
+                    </optgroup>\
+                    <optgroup label=\strokec6 "Imperial"\strokec4 >\
+                        <option value=\strokec6 "in"\strokec4 >\strokec5 in\strokec4 </option>\
+                        <option value=\strokec6 "ft"\strokec4 >ft</option>\
+                    </optgroup>\
+                </select>\
+            </div>\
+        </div>\
+\
+        <button id=\strokec6 "calculateButton"\strokec4 \
+                \strokec12 class\strokec4 =\strokec6 "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-200 ease-in-out transform hover:scale-105"\strokec4 >\
+            Calculate Volume\
+        </button>\
+\
+        <div id=\strokec6 "resultContainer"\strokec4  \strokec12 class\strokec4 =\strokec6 "mt-8 p-4 bg-blue-50 rounded-lg text-blue-800 hidden"\strokec4 >\
+            <p \strokec12 class\strokec4 =\strokec6 "font-semibold text-lg mb-2"\strokec4 >Results\strokec8 :\strokec4 </p>\
+            <p>Volume \strokec8 (\strokec4 Cubic Centimeters\strokec8 ):\strokec4  <span id=\strokec6 "volumeCubicCm"\strokec4  \strokec12 class\strokec4 =\strokec6 "font-bold"\strokec4 ></span> cm\'b3</p>\
+            <p>Volume \strokec8 (\strokec4 Liters\strokec8 ):\strokec4  <span id=\strokec6 "volumeLiters"\strokec4  \strokec12 class\strokec4 =\strokec6 "font-bold"\strokec4 ></span> L</p>\
+            <p>Volume \strokec8 (\strokec4 US Gallons\strokec8 ):\strokec4  <span id=\strokec6 "volumeGallons"\strokec4  \strokec12 class\strokec4 =\strokec6 "font-bold"\strokec4 ></span> gal</p>\
+            <p \strokec12 class\strokec4 =\strokec6 "mt-4 text-sm text-gray-700"\strokec4 >Formula Used\strokec8 :\strokec4 </p>\
+            <p \strokec12 class\strokec4 =\strokec6 "text-sm font-mono text-gray-800"\strokec4  id=\strokec6 "formulaDisplay"\strokec4 ></p>\
+        </div>\
+\
+        <div id=\strokec6 "errorMessage"\strokec4  \strokec12 class\strokec4 =\strokec6 "mt-8 p-4 bg-red-100 rounded-lg text-red-700 hidden"\strokec4 >\
+            <p \strokec12 class\strokec4 =\strokec6 "font-semibold"\strokec4 >Error\strokec8 :\strokec4 </p>\
+            <p id=\strokec6 "errorText"\strokec4 ></p>\
+        </div>\
+    </div>\
+\
+    <script>\
+        // Get references to HTML elements\
+        const diameterInput = document.getElementById\strokec8 (\strokec6 'diameter'\strokec8 );\strokec4 \
+        const lengthInput = document.getElementById\strokec8 (\strokec6 'length'\strokec8 );\strokec4 \
+        const diameterUnitSelect = document.getElementById\strokec8 (\strokec6 'diameterUnit'\strokec8 );\strokec4 \
+        const lengthUnitSelect = document.getElementById\strokec8 (\strokec6 'lengthUnit'\strokec8 );\strokec4 \
+        const calculateButton = document.getElementById\strokec8 (\strokec6 'calculateButton'\strokec8 );\strokec4 \
+        const resultContainer = document.getElementById\strokec8 (\strokec6 'resultContainer'\strokec8 );\strokec4 \
+        const volumeCubicCmSpan = document.getElementById\strokec8 (\strokec6 'volumeCubicCm'\strokec8 );\strokec4 \
+        const volumeLitersSpan = document.getElementById\strokec8 (\strokec6 'volumeLiters'\strokec8 );\strokec4 \
+        const volumeGallonsSpan = document.getElementById\strokec8 (\strokec6 'volumeGallons'\strokec8 );\strokec4 \
+        const formulaDisplay = document.getElementById\strokec8 (\strokec6 'formulaDisplay'\strokec8 );\strokec4  // New\strokec8 :\strokec4  Formula display span\
+        const errorMessageDiv = document.getElementById\strokec8 (\strokec6 'errorMessage'\strokec8 );\strokec4 \
+        const errorTextParagraph = document.getElementById\strokec8 (\strokec6 'errorText'\strokec8 );\strokec4 \
+\
+        // Conversion factors \strokec7 for\strokec4  volume\
+        const CUBIC_CM_TO_LITERS = \strokec10 0.001\strokec8 ;\strokec4 \
+        const CUBIC_CM_TO_GALLONS = \strokec10 0.000264172\strokec8 ;\strokec4 \
+\
+        /**\
+         * Converts a given value \strokec7 from\strokec4  a specified unit to centimeters.\
+         * @param \strokec8 \{\strokec4 number\strokec8 \}\strokec4  value - The numerical measurement.\
+         * @param \strokec8 \{\strokec4 string\strokec8 \}\strokec4  unit - The unit of the value \strokec8 (\strokec6 'cm'\strokec8 ,\strokec4  \strokec6 'in'\strokec8 ,\strokec4  \strokec6 'm'\strokec8 ,\strokec4  \strokec6 'ft'\strokec8 ,\strokec4  \strokec6 'mm'\strokec8 )\strokec4 .\
+         * @returns \strokec8 \{\strokec4 number\strokec8 \}\strokec4  The converted value \strokec5 in\strokec4  centimeters.\
+         */\
+        function convertToCentimeters\strokec8 (\strokec4 value\strokec8 ,\strokec4  unit\strokec8 )\strokec4  \strokec8 \{\strokec4 \
+            switch \strokec8 (\strokec4 unit\strokec8 )\strokec4  \strokec8 \{\strokec4 \
+                \strokec7 case\strokec4  \strokec6 'in'\strokec8 :\strokec4  // Inches to centimeters \strokec8 (\strokec10 1\strokec4  inch = \strokec10 2.54\strokec4  cm\strokec8 )\strokec4 \
+                    \strokec7 return\strokec4  value * \strokec10 2.54\strokec8 ;\strokec4 \
+                \strokec7 case\strokec4  \strokec6 'm'\strokec8 :\strokec4   // Meters to centimeters \strokec8 (\strokec10 1\strokec4  meter = \strokec10 100\strokec4  cm\strokec8 )\strokec4 \
+                    \strokec7 return\strokec4  value * \strokec10 100\strokec8 ;\strokec4 \
+                \strokec7 case\strokec4  \strokec6 'ft'\strokec8 :\strokec4  // Feet to centimeters \strokec8 (\strokec10 1\strokec4  foot = \strokec10 12\strokec4  inches = \strokec10 12\strokec4  * \strokec10 2.54\strokec4  cm = \strokec10 30.48\strokec4  cm\strokec8 )\strokec4 \
+                    \strokec7 return\strokec4  value * \strokec10 30.48\strokec8 ;\strokec4 \
+                \strokec7 case\strokec4  \strokec6 'mm'\strokec8 :\strokec4  // Millimeters to centimeters \strokec8 (\strokec10 1\strokec4  mm = \strokec10 0.1\strokec4  cm\strokec8 )\strokec4 \
+                    \strokec7 return\strokec4  value * \strokec10 0.1\strokec8 ;\strokec4 \
+                \strokec7 case\strokec4  \strokec6 'cm'\strokec8 :\strokec4  // Centimeters \strokec8 (\strokec4 base unit\strokec8 )\strokec4 \
+                default\strokec8 :\strokec4 \
+                    \strokec7 return\strokec4  value\strokec8 ;\strokec4 \
+            \strokec8 \}\strokec4 \
+        \strokec8 \}\strokec4 \
+\
+        /**\
+         * Calculates the volume of a cylinder given its diameter \strokec5 and\strokec4  length \strokec8 (\strokec4 height\strokec8 )\strokec4  \strokec5 in\strokec4  centimeters.\
+         * This function always assumes inputs are \strokec5 in\strokec4  centimeters.\
+         * @param \strokec8 \{\strokec4 number\strokec8 \}\strokec4  diameterCm - The diameter of the cylinder \strokec5 in\strokec4  centimeters.\
+         * @param \strokec8 \{\strokec4 number\strokec8 \}\strokec4  lengthCm - The length \strokec8 (\strokec5 or\strokec4  height\strokec8 )\strokec4  of the cylinder \strokec5 in\strokec4  centimeters.\
+         * @returns \strokec8 \{\strokec4 number|string\strokec8 \}\strokec4  The calculated volume of the cylinder \strokec5 in\strokec4  cubic centimeters.\
+         */\
+        function calculateCylinderVolume\strokec8 (\strokec4 diameterCm\strokec8 ,\strokec4  lengthCm\strokec8 )\strokec4  \strokec8 \{\strokec4 \
+            \strokec7 if\strokec4  \strokec8 (\strokec4 diameterCm <= \strokec10 0\strokec4  || lengthCm <= \strokec10 0\strokec8 )\strokec4  \strokec8 \{\strokec4 \
+                \strokec7 return\strokec4  \strokec6 "Diameter and length must be positive values after conversion."\strokec8 ;\strokec4 \
+            \strokec8 \}\strokec4 \
+\
+            const radiusCm = diameterCm / \strokec10 2\strokec8 ;\strokec4 \
+            // Volume of a cylinder = pi * r^\strokec10 2\strokec4  * h\
+            const volumeCubicCm = Math.PI * \strokec8 (\strokec4 radiusCm ** \strokec10 2\strokec8 )\strokec4  * lengthCm\strokec8 ;\strokec4 \
+            \strokec7 return\strokec4  volumeCubicCm\strokec8 ;\strokec4 \
+        \strokec8 \}\strokec4 \
+\
+        // Event listener \strokec7 for\strokec4  the calculate button\
+        calculateButton.addEventListener\strokec8 (\strokec6 'click'\strokec8 ,\strokec4  \strokec8 ()\strokec4  => \strokec8 \{\strokec4 \
+            // Hide previous messages\
+            resultContainer.classList.add\strokec8 (\strokec6 'hidden'\strokec8 );\strokec4 \
+            errorMessageDiv.classList.add\strokec8 (\strokec6 'hidden'\strokec8 );\strokec4 \
+\
+            const diameterStr = diameterInput.value\strokec8 ;\strokec4 \
+            const lengthStr = lengthInput.value\strokec8 ;\strokec4 \
+            const diameterUnit = diameterUnitSelect.value\strokec8 ;\strokec4 \
+            const lengthUnit = lengthUnitSelect.value\strokec8 ;\strokec4 \
+\
+            // Input validation\
+            \strokec7 if\strokec4  \strokec8 (\strokec4 diameterStr === \strokec6 ''\strokec4  || lengthStr === \strokec6 ''\strokec8 )\strokec4  \strokec8 \{\strokec4 \
+                errorTextParagraph.textContent = \strokec6 "Please enter values for both diameter and length."\strokec8 ;\strokec4 \
+                errorMessageDiv.classList.remove\strokec8 (\strokec6 'hidden'\strokec8 );\strokec4 \
+                \strokec7 return\strokec8 ;\strokec4 \
+            \strokec8 \}\strokec4 \
+\
+            const diameterRaw = parseFloat\strokec8 (\strokec4 diameterStr\strokec8 );\strokec4 \
+            const lengthRaw = parseFloat\strokec8 (\strokec4 lengthStr\strokec8 );\strokec4 \
+\
+            \strokec7 if\strokec4  \strokec8 (\strokec4 isNaN\strokec8 (\strokec4 diameterRaw\strokec8 )\strokec4  || isNaN\strokec8 (\strokec4 lengthRaw\strokec8 ))\strokec4  \strokec8 \{\strokec4 \
+                errorTextParagraph.textContent = \strokec6 "Invalid input. Please enter valid numbers."\strokec8 ;\strokec4 \
+                errorMessageDiv.classList.remove\strokec8 (\strokec6 'hidden'\strokec8 );\strokec4 \
+                \strokec7 return\strokec8 ;\strokec4 \
+            \strokec8 \}\strokec4 \
+\
+            // Convert raw inputs to centimeters before calculation\
+            const diameterCm = convertToCentimeters\strokec8 (\strokec4 diameterRaw\strokec8 ,\strokec4  diameterUnit\strokec8 );\strokec4 \
+            const lengthCm = convertToCentimeters\strokec8 (\strokec4 lengthRaw\strokec8 ,\strokec4  lengthUnit\strokec8 );\strokec4 \
+\
+            // Validate that converted values are positive\
+            \strokec7 if\strokec4  \strokec8 (\strokec4 diameterCm <= \strokec10 0\strokec4  || lengthCm <= \strokec10 0\strokec8 )\strokec4  \strokec8 \{\strokec4 \
+                errorTextParagraph.textContent = \strokec6 "Diameter and length must be positive values. Check your inputs and selected units."\strokec8 ;\strokec4 \
+                errorMessageDiv.classList.remove\strokec8 (\strokec6 'hidden'\strokec8 );\strokec4 \
+                \strokec7 return\strokec8 ;\strokec4 \
+            \strokec8 \}\strokec4 \
+\
+            // Perform calculation using the converted centimeter values\
+            const volumeCubicCmResult = calculateCylinderVolume\strokec8 (\strokec4 diameterCm\strokec8 ,\strokec4  lengthCm\strokec8 );\strokec4 \
+\
+            // Display the result\
+            \strokec7 if\strokec4  \strokec8 (\strokec4 typeof volumeCubicCmResult === \strokec6 'string'\strokec8 )\strokec4  \strokec8 \{\strokec4 \
+                errorTextParagraph.textContent = volumeCubicCmResult\strokec8 ;\strokec4 \
+                errorMessageDiv.classList.remove\strokec8 (\strokec6 'hidden'\strokec8 );\strokec4 \
+            \strokec8 \}\strokec4  \strokec7 else\strokec4  \strokec8 \{\strokec4 \
+                // Convert the base volume \strokec8 (\strokec4 cubic cm\strokec8 )\strokec4  to liters \strokec5 and\strokec4  gallons\
+                const volumeLiters = volumeCubicCmResult * CUBIC_CM_TO_LITERS\strokec8 ;\strokec4 \
+                const volumeGallons = volumeCubicCmResult * CUBIC_CM_TO_GALLONS\strokec8 ;\strokec4 \
+\
+                // Update the display spans\strokec8 ,\strokec4  formatting to \strokec10 5\strokec4  decimal places\
+                volumeCubicCmSpan.textContent = volumeCubicCmResult.toFixed\strokec8 (\strokec10 5\strokec8 );\strokec4 \
+                volumeLitersSpan.textContent = volumeLiters.toFixed\strokec8 (\strokec10 5\strokec8 );\strokec4 \
+                volumeGallonsSpan.textContent = volumeGallons.toFixed\strokec8 (\strokec10 5\strokec8 );\strokec4 \
+\
+                // Display the formula\
+                const radiusCm = diameterCm / \strokec10 2\strokec8 ;\strokec4 \
+                formulaDisplay.textContent = `V = \uc0\u960  * \strokec8 (\strokec4 $\strokec8 \{\strokec4 radiusCm.toFixed\strokec8 (\strokec10 2\strokec8 )\})\strokec4 \'b2 * $\strokec8 \{\strokec4 lengthCm.toFixed\strokec8 (\strokec10 2\strokec8 )\}\strokec4  cm\'b3`\strokec8 ;\strokec4 \
+\
+\
+                resultContainer.classList.remove\strokec8 (\strokec6 'hidden'\strokec8 );\strokec4 \
+            \strokec8 \}\strokec4 \
+        \strokec8 \});\strokec4 \
+    </script>\
+</body>\
+</html>\
+\
+\
+}
